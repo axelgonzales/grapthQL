@@ -11,6 +11,7 @@ docker-compose up
 Dirígete a la carpeta antifraude.
 Instala las dependencias ejecutando:
 npm install
+
 Inicia el servicio con el siguiente comando:
 npm run start
 
@@ -22,7 +23,6 @@ npm install
 
 Inicia el servicio con el siguiente comando:
 npm run start
-
 
 ### Notas Adicionales
 Si encuentras algún problema durante la configuración o ejecución, consulta la documentación del proyecto o comunícate con el equipo de desarrollo para obtener ayuda.
