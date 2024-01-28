@@ -11,7 +11,7 @@ docker-compose up
 <ol>
   <li>Dirígete a la carpeta antifraude.</li>
   <li>Instala las dependencias ejecutando:
-     ```bash
+     ```json
 npm install
 ```
 </li>
