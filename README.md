@@ -11,14 +11,15 @@ docker-compose up
 <ol>
   <li>Dirígete a la carpeta antifraude.</li>
   <li>Instala las dependencias ejecutando:
-    
+     ```bash
 npm install
+```
 </li>
   <li>Inicia el servicio con el siguiente comando:
-    
-  npm run start
+    ```bash
+ npm run start
+```
   </li>  
-  
 </ol>
 
 
@@ -26,14 +27,15 @@ npm install
 <ol>
   <li>Dirígete a la carpeta transaction</li>
   <li>Instala las dependencias ejecutando:
-    
+     ```bash
 npm install
+```
 </li>
   <li>Inicia el servicio con el siguiente comando:
-    
-  npm run start
+    ```bash
+ npm run start
+```
   </li>  
-  
 </ol>
 
 ### Notas Adicionales
