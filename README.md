@@ -5,12 +5,12 @@ Para tener aún mejor rendimiento y menor carga en los servidores se utilizo Gra
 <ol>
   <li>A traves de GraphQL se crea una transaccción</li>
   <li>Desde el primer microservicio (transacción) se guarda la transacción en la base de datos</li>
-  <li>Desde el primer microservicio  (transacción) se crea un evento con el topic "antifraud-request"</li>
-  <li>Desde el segundo microservicio  (antifraude) se subscribe al topic "antifraud-request"</li>
+  <li>Desde el primer microservicio  (transacción) utilizando kafka se publica un mensaje en el topic "antifraud-request"</li>
+  <li>Desde el segundo microservicio  (antifraude) utilizando kafka se subscribe al topic "antifraud-request"</li>
   <li>Desde el segundo microservicio  (antifraude) se evalua la transacción si es mayor a 1000</li>
-  <li>Desde el segundo microservicio  (antifraude) se crea el evento de respuesta en el topic "antifraud-pull"</li>
-  <li>Desde el primer microservicio  (transacción) se subscribe al topic "antifraud-pull"</li>
-  <li>Desde el primer microservicio  (transacción) se actualizo el registro de esa transacción con el status de respuesta</li>
+  <li>Desde el segundo microservicio  (antifraude) utilizando kafka se publica un mensaje en el topic "antifraud-pull"</li>
+  <li>Desde el primer microservicio  (transacción) utilizando kafka se subscribe al topic "antifraud-pull"</li>
+  <li>Desde el primer microservicio  (transacción) se actualiza el registro de esa transacción con el status de respuesta</li>
 </ol>
 
 # Herramientas utilizadas
