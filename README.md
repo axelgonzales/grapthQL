@@ -56,6 +56,7 @@ docker-compose up
        npm run start
   </li>  
 </ol>
+
 ### Paso 4: Importar la colección postman para pruebas
 Desde postman seleccione la opción de importar y arrastre el siguiente archivo colocado en la raiz del proyecto
 Prueba Yape GPL.postman_collection.json
