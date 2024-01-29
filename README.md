@@ -15,6 +15,7 @@ Para tener aún mejor rendimiento y menor carga en los servidores se utilizo Gra
 
 # Diagrama de flujo de la solución
 
+```mermaid
 sequenceDiagram
     GraphQL->>+MS Transaction: Crea la Transacción
     MS Transaction->>+Database: Guardar Transacción| 
@@ -25,6 +26,7 @@ sequenceDiagram
     MS Anti-Fraud->>+ Kafka: Crea el mensaje Respuesta de evaluación en el topic "antifraud-pull" 
     MS Transaction->>+Kafka: Se subscribe a kafka en el topic "antifraud-pull" 
     MS Transaction ->>+Database: Actualiza en el registro de la transacción con la respuesta del antifraude
+```
 
 
 # Herramientas utilizadas
