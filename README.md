@@ -15,17 +15,16 @@ Para tener aún mejor rendimiento y menor carga en los servidores se utilizo Gra
 
 # Diagrama de flujo de la solución
 
-  flowchart LR
-    A((GraphQL)) -->|1. Crear Transacción| B((Transaction))
-    B -->|2. Guardar Transacción| C[(Database)]
-    B -->|3. Enviar evento 'Transaction Created'| D((Anti-Fraud))
-    D -->|4. Evaluar Transacción| E((Anti-Fraud))
-    E -->|5. Transacción > 1000| F((Anti-Fraud))
-    F -->|Sí| G((Anti-Fraud))
-    F -->|No| H((Transaction))
-    G -->|6. Enviar evento 'Status Rejected'| H
-    H -->|7. Actualizar registro con Status| C
-    E -->|6. Enviar evento 'Status Approved'| H
+sequenceDiagram
+    GraphQL->>+MS Transaction: Crea la Transacción
+    MS Transaction->>+Database: Guardar Transacción| 
+    MS Transaction->>+Kafka: Crea el mensaje de Transación en el topic "antifraud-request"
+    MS Transaction->>+GraphQL: Responde los datos de la transacción creada
+    MS Anti-Fraud->>+Kafka: Se subscribe a kafka en el topic "antifraud-request"
+    MS Anti-Fraud->>+ Kafka: evalue el monto de la transacción si esta es > 1000  
+    MS Anti-Fraud->>+ Kafka: Crea el mensaje Respuesta de evaluación en el topic "antifraud-pull" 
+    MS Transaction->>+Kafka: Se subscribe a kafka en el topic "antifraud-pull" 
+    MS Transaction ->>+Database: Actualiza en el registro de la transacción con la respuesta del antifraude
 
 
 # Herramientas utilizadas
