@@ -24,6 +24,12 @@ Las tecnologias que se usaron fueronh
    <li>PostgreSQL</li>
 </ol>
 
+# Requemientos previos del proyecto
+<ol>
+   <li>Node.js versión minima v18.14.2</li>
+   <li>Docker</li>
+</ol>
+
 # Instrucciones de Configuración y Ejecución
 
 ## Configuración del Proyecto
