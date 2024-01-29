@@ -13,6 +13,21 @@ Para tener aún mejor rendimiento y menor carga en los servidores se utilizo Gra
   <li>Desde el primer microservicio  (transacción) se actualiza el registro de esa transacción con el status de respuesta</li>
 </ol>
 
+#Diagrama de flujo de la solución
+
+  flowchart LR
+    A((GraphQL)) -->|1. Crear Transacción| B((Transaction))
+    B -->|2. Guardar Transacción| C[(Database)]
+    B -->|3. Enviar evento 'Transaction Created'| D((Anti-Fraud))
+    D -->|4. Evaluar Transacción| E((Anti-Fraud))
+    E -->|5. Transacción > 1000| F((Anti-Fraud))
+    F -->|Sí| G((Anti-Fraud))
+    F -->|No| H((Transaction))
+    G -->|6. Enviar evento 'Status Rejected'| H
+    H -->|7. Actualizar registro con Status| C
+    E -->|6. Enviar evento 'Status Approved'| H
+
+
 # Herramientas utilizadas
 Las tecnologias que se usaron fueronh
 <ol>
