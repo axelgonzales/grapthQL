@@ -1,13 +1,11 @@
 # Explicación de la solución
-Se creo nos microservicios uno para generar la transación y hacer el registro y actualización en la base de datos de Postgress
-y el otro para hacer la validación de antifraude donde las transacciones no tenian que ser mayores a 1000.
-Para la comunicación entre ellos se utilizo kafka.
-Donde los pasos de ejecución fueron los siguientes 
+Se implementaron dos microservicios: uno para gestionar transacciones y actualizar la base de datos, y otro para validar transacciones contra fraudes (donde si una transacción era mayor a 1000 era "rechazada" y en caso contrario "aprobada"). Se empleó Kafka para la comunicación entre ellos, garantizando asíncronía y tolerancia a fallos. La arquitectura permite escalabilidad y mejora del rendimiento.
+Para tener aún mejor rendimiento y menor carga en los servidores se utilizo GraphQL para solo traer la información necesaria para cada operación.
 
 <ol>
   <li>A traves de GraphQL se crea una transaccción</li>
   <li>Desde el primer microservicio (transacción) se guarda la transacción en la base de datos</li>
-  <li>Desde el primer microservicio  (transacción) se crea un evento con el topic "antifraud-request" para validar el antifraude de la transacción se</li>
+  <li>Desde el primer microservicio  (transacción) se crea un evento con el topic "antifraud-request"</li>
   <li>Desde el segundo microservicio  (antifraude) se subscribe al topic "antifraud-request"</li>
   <li>Desde el segundo microservicio  (antifraude) se evalua la transacción si es mayor a 1000</li>
   <li>Desde el segundo microservicio  (antifraude) se crea el evento de respuesta en el topic "antifraud-pull"</li>
@@ -25,6 +23,7 @@ Las tecnologias que se usaron fueronh
    <li>Kafka</li>
    <li>PostgreSQL</li>
 </ol>
+
 # Instrucciones de Configuración y Ejecución
 
 ## Configuración del Proyecto
