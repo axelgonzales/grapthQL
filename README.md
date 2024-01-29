@@ -13,7 +13,7 @@ Para tener aún mejor rendimiento y menor carga en los servidores se utilizo Gra
   <li>Desde el primer microservicio  (transacción) se actualiza el registro de esa transacción con el status de respuesta</li>
 </ol>
 
-#Diagrama de flujo de la solución
+# Diagrama de flujo de la solución
 
   flowchart LR
     A((GraphQL)) -->|1. Crear Transacción| B((Transaction))
