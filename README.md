@@ -30,7 +30,7 @@ sequenceDiagram
 
 
 # Herramientas utilizadas
-Las tecnologias que se usaron fueronh
+Las tecnologias que se usaron fueron
 <ol>
    <li>NodeJs</li>
    <li>Nestjs</li>
