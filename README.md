@@ -27,7 +27,10 @@ sequenceDiagram
     MS Transaction->>+Kafka: Se subscribe a kafka en el topic "antifraud-pull" 
     MS Transaction ->>+Database: Actualiza en el registro de la transacción con la respuesta del antifraude
 ```
-
+| Item     | Historia    | Cambio |
+|---------|---------|-------|
+| 1  | SV-18387   | Incidente doble IP |
+| 2 | TD-1420 | Error Registro IP - Pago Link Batch |
 
 # Herramientas utilizadas
 Las tecnologias que se usaron fueron
